@@ -1,0 +1,17 @@
+{
+  "name": "storybook-app",
+  "version": "1.0.0",
+  "description": "An app to share stories",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": "https://github.com/samtimberlan/storybook-app.git",
+  "author": "Tim Udoma",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.13.9",
+    "nodemon": "^1.14.10"
+  }
+}
