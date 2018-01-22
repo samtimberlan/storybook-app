@@ -17,7 +17,7 @@ module.exports = () => {
       },
       (accessToken, refreshToken, profile, done) => {
         // console.log(accessToken);
-        // console.log(profile);
+        console.log(profile);
         const image = profile.photos[0].value.substring(0, profile.photos[0].value.indexOf('?'));
 
         const newUser = {
