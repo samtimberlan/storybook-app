@@ -8,6 +8,14 @@ main {
   flex: 1 0 auto;
 }
 
+.nav-wrapper .fa-bars{
+  font-size: 2em;
+}
+
 .blue-hover:hover {
   background-color: #039be5;
+}
+
+footer{
+  margin-top: 20px;
 }
