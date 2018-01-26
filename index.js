@@ -1,15 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const passport = require('passport');
-const session = require('express-session');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+const passport = require('passport');//Needs Middleware
+const session = require('express-session');//Needs Middleware
+const bodyParser = require('body-parser');//Needs Middleware
+const cookieParser = require('cookie-parser');//Needs Middleware
 const keys = require('./config/keys');
-const exphbs = require('express-handlebars');
+const exphbs = require('express-handlebars');//Needs Middleware
 const path = require('path');
 
-//Load model
+//Load models
 require('./models/user');
+require('./models/Story');
 
 //Load passport
 require('./config/passport')('passport');
@@ -30,10 +31,15 @@ mongoose.connect(keys.mongoURI, {useMongoClient: true})
 
 const app = express();
 
+//Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 //Handlebars Middleware
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+//Cookie parser Middleware
 app.use(cookieParser());
 app.use(session({
   secret: 'selfish',
@@ -43,6 +49,8 @@ app.use(session({
 
 //Passport Middleware
 app.use(passport.initialize());
+
+//Session Middleware
 app.use(passport.session());
 
 //Set global variables
