@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const keys = require('./config/keys');
 const exphbs = require('express-handlebars');
+const path = require('path');
 
 //Load model
 require('./models/user');
@@ -16,6 +17,7 @@ require('./config/passport')('passport');
 //Load Routes
 const index = require('./routes/index');
 const auth = require('./routes/auth');
+const stories = require('./routes/stories');
 
 //Map global promises
 mongoose.Promise = global.Promise;
@@ -49,9 +51,13 @@ app.use((req, res,next)=> {
   next();
 });
 
+//Declare static files
+app.use(express.static(path.join(__dirname, 'public')));
+
 //Use routes
 app.use('/auth', auth);
 app.use('/', index);
+app.use('/stories', stories);
 
 //Set port
 const port = process.env.PORT || 5000;
