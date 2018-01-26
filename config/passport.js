@@ -32,7 +32,7 @@ module.exports = () => {
         })
         .then((user)=>{
           if(user){
-            done(null, false);
+            done(null, user);
           }
           else{
             //Create user

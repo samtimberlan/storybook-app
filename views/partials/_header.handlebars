@@ -2,18 +2,72 @@
   <div class="container">
     <div class="nav-wrapper">
       <a class="brand-logo center" href="/stories">
-       Storybook
+        Storybook
       </a>
-      <a href="#" data-activates="main-menu" class="button-collapse show-on-large"><i class="fa fa-bars" aria-hidden="true"></i></a>
+      <a href="#" data-activates="mainMenu" class="button-collapse show-on-large">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </a>
 
       <!--RIGHT NAV -->
       <ul class="right hide-on-small">
         {{#if user}}
-          <li><a href="/dashboard"> Welcome {{user.firstName}}</a></li>
-          <li><a href="/auth/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+        <li>
+          <a href="/dashboard"> Welcome {{user.firstName}}</a>
+        </li>
+        <li>
+          <a href="/auth/logout">
+            <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+        </li>
         {{else}}
-          <li><a href="/stories"><i class="fa fa-book"></i>  Public Stories</a></li>
+        <li>
+          <a href="/stories">
+            <i class="fa fa-book"></i> Public Stories</a>
+        </li>
         {{/if}}
+      </ul>
+      
+      <!--SIDE MENU-->
+      {{!-- <ul id="mainMenu" class="side-nav">
+    <li><div class="user-view">
+      <div class="background">
+        <img src="images/office.jpg">
+      </div>
+      <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+      <a href="#!name"><span class="white-text name">John Doe</span></a>
+      <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul> --}}
+      <ul class="side-nav" id="mainMenu">
+        <li>
+          {{#if user}} 
+          
+          {{else}}
+          <a href="/auth/google" class="btn red darken-1 waves-effect waves-light">
+            <i class="fa fa-google left" aria-hidden="true"></i> Login with Google</a>
+          {{/if}}
+        </li>
+         <li>
+          <a href="/stories">
+            <i class="fa fa-book"></i> Public Stories</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="/dashboard">
+            <i class="fa fa-gear"></i> Dashboard</a>
+        </li>
+        <li>
+          <a href="/stories">
+            <i class="fa fa-user"></i> Stories</a>
+        </li>
+        <li>
+          <a href="/auth/logout">
+            <i class="fa fa-sign-out"></i> Logout</a>
+        </li>
       </ul>
     </div>
   </div>
