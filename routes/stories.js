@@ -9,16 +9,17 @@ const User = mongoose.model('users');
 
 //Stories index
 router.get('/', (req, res)=>{
-  res.render('stories/index');
+   //Important:Filter story by status
+   Story.find({status : 'public'})
+   .populate('user')
+   .then(stories =>{
+     res.render('stories/index', {stories : stories});
+   });
 });
 
 //Add Story Form
 router.get('/add', ensureAuthenticated, (req, res)=>{
-  //Important:Filter story by status
-  Story.find({status : public})
-  .then(stories =>{
-    res.render('stories/add');
-  });
+  res.render('stories/add');
 });
 
 //Handle Add Post request 
