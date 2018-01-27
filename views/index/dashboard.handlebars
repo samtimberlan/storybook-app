@@ -21,10 +21,10 @@
           <i class="fa fa-pencil"></i> Edit
           </a>
           
-          <form action="/stories/{{id}}" method="post" id="deleteForm">
-          <a type="submit" class="btn red">
+          <form action="/stories/{{id}}?_method=DELETE" method="post" id="deleteForm">
+          <input type="submit" class="btn red">
             <i class="fa fa-remove"></i>
-             Delete</a>
+             Delete</input>
           </form>
           </td>
         </tr>

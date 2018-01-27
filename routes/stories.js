@@ -103,4 +103,13 @@ router.put('/:id', (req, res)=>{
     })
   });
 });
+
+//DELETE:delete form process
+router.delete('/:id', (req, res)=>{
+  Story.remove({_id : req.params.id})
+  .then(story => {
+    res.redirect('/dashboard');
+  });
+});
+
 module.exports = router;
