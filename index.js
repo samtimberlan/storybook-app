@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');//Needs Middleware
 const session = require('express-session');//Needs Middleware
 const bodyParser = require('body-parser');//Needs Middleware
+const methodOverride = require('method-override'); //Needs Middleware
 const cookieParser = require('cookie-parser');//Needs Middleware
 const keys = require('./config/keys');
 const exphbs = require('express-handlebars');//Needs Middleware
@@ -42,6 +43,9 @@ const app = express();
 //Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+//MMethod Override
+app.use(methodOverride('_method'))
 
 //Handlebars Middleware
 app.engine('handlebars', exphbs({
