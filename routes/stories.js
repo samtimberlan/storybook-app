@@ -26,13 +26,13 @@ router.get('/show/:id', (req, res)=>{
   .populate('user')
   .populate('comments.commentUser')
   .then(story => {
-    if(story.status === 'public'){
+    if(story.status == 'public'){
       res.render('stories/show', {
         story : story
       });
     }else{
       if(req.user){
-        if(req.user.id === story.user._id){
+        if(req.user.id == story.user._id){
           res.render('stories/show', {
             story : story
           });
@@ -114,7 +114,7 @@ router.get('/edit/:id', ensureAuthenticated, (req, res)=>{
     _id : req.params.id
   })
   .then(story => {
-    if(story.user !== req.user.id){
+    if(story.user != req.user.id){
       res.redirect('/stories');
     }else{
     res.render('stories/edit', {
@@ -125,7 +125,7 @@ router.get('/edit/:id', ensureAuthenticated, (req, res)=>{
 });
 
 //PUT: Edit form process
-router.put('/:id', (req, res)=>{
+router.put('/:id', ensureAuthenticated,(req, res)=>{
   Story.findOne({
     _id : req.params.id
   })
