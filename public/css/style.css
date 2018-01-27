@@ -36,6 +36,10 @@ text-transform: capitalize;
   display: inline;
 }
 
+.position{
+  margin: 3px;
+}
+
 footer{
   margin-top: 20px;
 }

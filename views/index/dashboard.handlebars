@@ -21,11 +21,15 @@
       <td>
         <span class="dash-status">{{status}}</span>
       </td>
-      <td>
-        <a href="/stories/edit/{{id}}" class="btn left-align">
+       <td><a href="/stories/edit/{{id}}" class="btn-floating left-align position">
           <i class="fa fa-pencil"></i> Edit
-        </a>
-      </td>
+          </a>
+          
+          <form action="/stories/{{id}}?_method=DELETE" method="post" id="deleteForm">
+          <button type="submit" class="btn-floating red position">
+            <i class="fa fa-trash"></i></button>
+          </form>
+          </td>
     </tr>
     {{/each}}
   </tbody>
