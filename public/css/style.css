@@ -12,8 +12,15 @@ main {
   font-size: 2em;
 }
 
-.nav-wrapper .fa-sign-out{
-  font-size: 2em;
+@media only screen and (max-width: 500px) {
+  .nav-wrapper .fa-sign-out{
+    font-size: 1.8em;
+    margin-top:   60%;
+  }
+
+  .nav-wrapper .fa-bars{
+    font-size: 1.8em;
+  }
 }
 
 .blue-hover:hover {
