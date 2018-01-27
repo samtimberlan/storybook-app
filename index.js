@@ -23,7 +23,8 @@ const stories = require('./routes/stories');
 //Handlebars Helpers
 const {
   truncate,
-  stripTags
+  stripTags, 
+  formatDate
 } = require('./helpers/hbs');
 
 //Map global promises
@@ -45,7 +46,8 @@ app.use(bodyParser.json());
 app.engine('handlebars', exphbs({
   helpers: {
     truncate : truncate,
-    stripTags : stripTags
+    stripTags : stripTags,
+    formatDate : formatDate
   },
   defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');

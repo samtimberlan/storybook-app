@@ -16,7 +16,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.5",
     "method-override": "^2.3.9",
-    "moment": "^2.18.1",
+    "moment": "^2.20.1",
     "mongoose": "^4.13.9",
     "nodemon": "^1.14.10",
     "passport": "^0.4.0",
