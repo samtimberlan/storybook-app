@@ -12,6 +12,10 @@ main {
   font-size: 2em;
 }
 
+.nav-wrapper .fa-signout{
+  font-size: 1.5em;
+}
+
 .blue-hover:hover {
   background-color: #039be5;
 }
