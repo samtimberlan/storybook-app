@@ -31,10 +31,12 @@
     <div class="card">
       <div class="card-content">
         <h5>{{commentBody}}</h5>
+        <a href="/stories/user/{{commentUser.id}}">
         <div class="chip">
           <img src="{{commentUser.image}}" alt="comment user image"> 
           {{commentUser.firstName}} {{commentUser.lastName}} 
         </div>
+        </a>
         <br>
         <small>Posted on: {{formatDate commentdate 'MMMM do YYYY'}}</small>
       </div>
@@ -48,7 +50,9 @@
         <span class="card-title">
           {{story.user.firstName}} {{story.user.lastName}}
         </span>
+        <a href="/stories/user/{{story.user.id}}">
         <img src="{{story.user.image}}" class="responsive-img circle" alt="Avatar">
+        </a>
       </div>
       <div class="card-action">
         <a href="/stories/user/{{story.user.id}}" class="btn">More From {{story.user.firstName}}</a>

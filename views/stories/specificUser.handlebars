@@ -1,4 +1,8 @@
+{{#if user}}
+<h1>Your Stories</h1>
+{{else}}
 <h1>Stories</h1>
+{{/if}}
 <div class="row">
   {{#each stories}}
   <div class="col s12 m4">
@@ -14,12 +18,10 @@
         <h5>{{title}}</h5>
         <p class="story-text">{{stripTags (truncate body 150)}}</p>
         <br>
-        <a href="/stories/user/{{user.id}}">
         <div class="chip">
           <img src="{{user.image}}" alt="User image"> 
           {{user.firstName}} {{user.lastName}} 
         </div>
-        </a>
       </div>
       <div class="card-action center-align blue lighten-1">
         <a href="/stories/show/{{id}}" class="btn red">

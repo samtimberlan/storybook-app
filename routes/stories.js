@@ -26,15 +26,59 @@ router.get('/show/:id', (req, res)=>{
   .populate('user')
   .populate('comments.commentUser')
   .then(story => {
-    res.render('stories/show', {
-      story : story
-    });
+    if(story.status === 'public'){
+      res.render('stories/show', {
+        story : story
+      });
+    }else{
+      if(req.user){
+        if(req.user.id === story.user._id){
+          res.render('stories/show', {
+            story : story
+          });
+        }else{
+          res.redirect("/stories");
+        }
+      }
+      else{
+        res.redirect("/stories");
+      }
+    }
   });
+});
+
+//GET: List stories from a user
+router.get('/user/:userId', (req, res)=>{
+  Story.find({user : req.params.userId, status: 'public'})
+  .populate('user')
+  .sort({date : 'desc'})
+  .then(
+    stories =>{
+      res.render('stories/specificUSer', {
+        stories : stories
+      });
+    }
+  );
+});
+
+//GET: My stories
+router.get('/mine', ensureAuthenticated, (req, res)=>{
+  Story.find({user : req.user.id})
+  .populate('user')
+  .sort({date : 'desc'})
+  .then(
+    stories =>{
+      res.render('stories/specificUser', {
+        stories : stories
+      });
+    }
+  );
 });
 
 // GET: Add Story Form
 router.get('/add', ensureAuthenticated, (req, res)=>{
-  res.render('stories/add');
+  res.render('stories/add')
+  .then();
 });
 
 //Handle Add Post request 
