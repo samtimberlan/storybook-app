@@ -12,16 +12,16 @@
       </div>
       <div class="card-content center-align">
         <h5>{{title}}</h5>
-        <p class="story-text">{{{body}}}</p>
+        <p class="story-text">{{stripTags (truncate body 150)}}</p>
         <br>
         <div class="chip">
           <img src="{{user.image}}" alt="User image"> 
           {{user.firstName}} {{user.lastName}} 
         </div>
       </div>
-      <div class="card-action center-align">
-        <a href="/stories/show/{{id}}" class="btn grey">
-        <i class="fa fa-more"></i> Read More...
+      <div class="card-action center-align blue lighten-1">
+        <a href="/stories/show/{{id}}" class="btn red">
+        Read More... <i class="fa fa-chevron-circle-right"></i>
         </a>
       </div>
     </div>

@@ -2,6 +2,7 @@
   <div class="container">
     <div class="nav-wrapper">
       <a class="brand-logo center" href="/">
+      <i class="fa fa-pencil-square-o hide-on-small-only"></i>
         Storybook
       </a>
       <a href="#" data-activates="mainMenu" class="button-collapse show-on-large">
@@ -9,7 +10,7 @@
       </a>
 
       <!--RIGHT NAV -->
-      <ul class="right hide-on-small">
+      <ul class="right hide-on-small-only">
         {{#if user}}
         <li>
           <a href="/dashboard"> Welcome {{user.firstName}}</a>
@@ -21,22 +22,27 @@
         {{else}}
         <li>
           <a href="/stories">
-            <i class="fa fa-book"></i> Public Stories</a>
+            <i class="fa fa-book"></i>  Public Stories</a>
         </li>
         {{/if}}
       </ul>
       
       <!--SIDE MENU-->
       <ul class="side-nav" id="mainMenu">
-        <--User view-->
-        <li><div class="user-view">
-          <a href="#!user"><img class="circle" src="http://betheme.muffingroupsc.netdna-cdn.com/be/vegetables/wp-content/uploads/2017/09/home_vegetables_pricingbox4.png"></a>
-      <div class="background">
-        <img class="responsive-img" src="http://betheme.muffingroupsc.netdna-cdn.com/be/vegetables/wp-content/uploads/2017/09/home_vegetables_pic1.png">
-      </div>
+        <!--User view-->
+        {{#if user}}
+          <li><div class="background center">
+          <a href="#"><img width="200" class="responsive-img circle"                       src="{{user.image}}"></a>
       </div>
       </li>
-        <--End user view-->
+        {{else}}
+        <li>
+          <div class="background center">
+        <img width="200" class="responsive-img" src="http://betheme.muffingroupsc.netdna-cdn.com/be/vegetables/wp-content/uploads/2017/09/home_vegetables_pic1.png">
+      </div>
+        {{/if}}
+        </li>
+        <!--End user view-->
         <li>
           {{#if user}} 
           

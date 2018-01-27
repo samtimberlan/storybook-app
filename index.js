@@ -20,6 +20,12 @@ const index = require('./routes/index');
 const auth = require('./routes/auth');
 const stories = require('./routes/stories');
 
+//Handlebars Helpers
+const {
+  truncate,
+  stripTags
+} = require('./helpers/hbs');
+
 //Map global promises
 mongoose.Promise = global.Promise;
 
@@ -36,7 +42,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Handlebars Middleware
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({
+  helpers: {
+    truncate : truncate,
+    stripTags : stripTags
+  },
+  defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 //Cookie parser Middleware
