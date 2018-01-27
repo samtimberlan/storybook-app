@@ -77,8 +77,7 @@ router.get('/mine', ensureAuthenticated, (req, res)=>{
 
 // GET: Add Story Form
 router.get('/add', ensureAuthenticated, (req, res)=>{
-  res.render('stories/add')
-  .then();
+  res.render('stories/add');
 });
 
 //Handle Add Post request 
