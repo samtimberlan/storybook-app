@@ -24,7 +24,8 @@ const stories = require('./routes/stories');
 const {
   truncate,
   stripTags, 
-  formatDate
+  formatDate,
+  select
 } = require('./helpers/hbs');
 
 //Map global promises
@@ -47,7 +48,8 @@ app.engine('handlebars', exphbs({
   helpers: {
     truncate : truncate,
     stripTags : stripTags,
-    formatDate : formatDate
+    formatDate : formatDate,
+    select: select
   },
   defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');

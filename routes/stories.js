@@ -7,7 +7,7 @@ const {ensureAuthenticated} = require('../helpers/auth');
 const Story = mongoose.model('stories');
 const User = mongoose.model('users');
 
-//Stories index
+//GET: Stories index
 router.get('/', (req, res)=>{
    //Important:Filter story by status
    Story.find({status : 'public'})
@@ -17,7 +17,7 @@ router.get('/', (req, res)=>{
    });
 });
 
-//Show single story
+//GET: Show single story
 router.get('/show/:id', (req, res)=>{
   Story.findOne({
     _id : req.params.id
@@ -30,7 +30,7 @@ router.get('/show/:id', (req, res)=>{
   });
 });
 
-//Add Story Form
+// GET: Add Story Form
 router.get('/add', ensureAuthenticated, (req, res)=>{
   res.render('stories/add');
 });
@@ -63,7 +63,8 @@ new Story(newStory)
 })
 });
 
-router.get('/edit', ensureAuthenticated, (req, res)=>{
+// GET: Edit single story
+router.get('/edit/:id', ensureAuthenticated, (req, res)=>{
   Story.findOne({
     _id : req.params.id
   })
