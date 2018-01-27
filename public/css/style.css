@@ -20,6 +20,10 @@ main {
   height: 120px;
 }
 
+.story-user-chip{
+  margin-top: 10px;
+}
+
 .card{
   margin-bottom: 5em;
 }

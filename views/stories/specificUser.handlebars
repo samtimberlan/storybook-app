@@ -16,10 +16,10 @@
       </div>
       <div class="card-content center-align">
         <h5>{{title}}</h5>
-        <p class="story-text">{{stripTags (truncate body 150)}}</p>
+        <p class="story-text">{{stripTags (truncate body 100)}}</p>
         <br>
         <br>
-        <div class="chip">
+        <div class="chip story-user-chip">
           <img src="{{user.image}}" alt="User image"> 
           {{user.firstName}} {{user.lastName}} 
         </div>

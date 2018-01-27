@@ -54,7 +54,7 @@ router.get('/user/:userId', (req, res)=>{
   .sort({date : 'desc'})
   .then(
     stories =>{
-      res.render('stories/specificUSer', {
+      res.render('stories/specificUser', {
         stories : stories
       });
     }
