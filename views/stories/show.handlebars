@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col s12 m8">
-    <h3>{{story.title}} 
-      <small>{{{editIcon story.user.id user.id story.id false}}}</small>
+    <h3>{{story.title}} </h3>
     </h3>
     <div class="card story">
       <div class="card-content">
@@ -16,14 +15,15 @@
         <span class="card-title">Comments</span>
         {{#if user}}
         <form action="/stories/comment/{{story.id}}" method="post">
-        <div class="input-field">
-          <textarea name="commentBody" class="materialize-textarea"></textarea>
-          <label for="commentBody">Add Comment</label>
-          <input type="submit" class="btn">
-        </div>
+          <div class="input-field">
+            <textarea name="commentBody" class="materialize-textarea"></textarea>
+            <label for="commentBody">Add Comment</label>
+            <input type="submit" class="btn">
+          </div>
         </form>
-          {{else}}
-          <p>Please <a href="/auth/google">log in</a> to leave a comment</p>
+        {{else}}
+        <p>Please
+          <a href="/auth/google">log in</a> to leave a comment</p>
         {{/if}}
       </div>
     </div>
@@ -32,17 +32,15 @@
       <div class="card-content">
         <h5>{{commentBody}}</h5>
         <a href="/stories/user/{{commentUser.id}}">
-        <div class="chip">
-          <img src="{{commentUser.image}}" alt="comment user image"> 
-          {{commentUser.firstName}} {{commentUser.lastName}} 
-        </div>
+          <div class="chip">
+            <img src="{{commentUser.image}}" alt="comment user image"> {{commentUser.firstName}} {{commentUser.lastName}}
+          </div>
         </a>
         <br>
         <small>Posted on: {{formatDate commentdate 'MMMM Do YYYY'}}</small>
       </div>
     </div>
-    {{/each}}
-    {{/if}}
+    {{/each}} {{/if}}
   </div>
   <div class="col s12 m4">
     <div class="card center-align">
@@ -51,12 +49,52 @@
           {{story.user.firstName}} {{story.user.lastName}}
         </span>
         <a href="/stories/user/{{story.user.id}}">
-        <img src="{{story.user.image}}" class="responsive-img circle" alt="Avatar">
+          <img src="{{story.user.image}}" class="responsive-img circle" alt="Avatar">
         </a>
       </div>
       <div class="card-action">
         <a href="/stories/user/{{story.user.id}}" class="btn">More From {{story.user.firstName}}</a>
       </div>
     </div>
+  </div>
+</div>
+<!--Floating buttons-->
+<div class="fixed-action-btn horizontal position">
+    <a class="btn-floating btn-large teal">
+      <i class="fa fa-pencil"></i>
+    </a>
+    <ul>
+      <li>
+        <a class="btn-floating red darken-1 waves-effect waves-light modal-trigger" href="#modal1">
+          <i class="fa fa-trash"></i>
+        </a>
+      </li>
+      <li>
+        <a class="btn-floating blue waves-effect waves-light" href="/stories/edit/{{story.id}}">
+          <i class="fa fa-edit"></i>
+        </a>
+      </li>
+      <li>
+        <a href="/stories/add" class="btn-floating waves-effect waves-light purple">
+          <i class="fa fa-plus"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+<!--Delete with confirmation-->
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Confirm Delete</h4>
+    <p>Are you sure you want to delete this story?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat ">Cancel</a>
+    <form action="/stories/{{story.id}}?_method=DELETE" method="post" id="deleteForm">
+      <button type="submit" class="btn red">
+        Delete
+      </button>
+    </form>
   </div>
 </div>

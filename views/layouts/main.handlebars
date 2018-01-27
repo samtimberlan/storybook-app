@@ -25,6 +25,7 @@
 
   {{> _footer}}
 
+
   <!--SCRIPTS-->
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -39,6 +40,7 @@
    $(document).ready(() => {
       $('.button-collapse').sideNav();
       $('select').material_select();
+      $('.modal').modal();
     }); 
     CKEDITOR.replace( 'body' , {
       plugins : 'wysiwygarea,toolbar,basicstyles,link'
