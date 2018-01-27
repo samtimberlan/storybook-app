@@ -9,6 +9,9 @@ const keys = require('./config/keys');
 const exphbs = require('express-handlebars');//Needs Middleware
 const path = require('path');
 
+let year = new Date();
+year = year.getFullYear();
+
 //Load models
 require('./models/user');
 require('./models/Story');
@@ -77,6 +80,7 @@ app.use(passport.session());
 //Set global variables
 app.use((req, res,next)=> {
   res.locals.user = req.user || null;
+  res.locals.year = year;
   next();
 });
 
