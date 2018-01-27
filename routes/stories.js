@@ -63,4 +63,15 @@ new Story(newStory)
 })
 });
 
+router.get('/edit', ensureAuthenticated, (req, res)=>{
+  Story.findOne({
+    _id : req.params.id
+  })
+  .then(story => {
+    res.render('stories/edit', {
+      story : story
+    });
+  });
+});
+
 module.exports = router;
